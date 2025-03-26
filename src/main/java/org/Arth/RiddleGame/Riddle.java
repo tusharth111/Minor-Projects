@@ -22,9 +22,9 @@ public class Riddle {
                 " I'm not alive, but I can grow; I don't have lungs, but I need air; I don't have a mouth, but water kills me. What am I?"
         };
         String[] answer={
-            "An echo",
+            "echo",
             "Footsteps",
-            "A fire"
+            "fire"
         };
         //Define the hints for each riddle
         String [] hints= {
@@ -32,9 +32,9 @@ public class Riddle {
                 "Hint: Think about what you leave behind when you walk.",
                 "Hint: It produces heat and light."
         };
-        int numRiddles = riddles.length;
-        while(true){
-            int randomIndex = (int) (Math.random() *numRiddles);
+        boolean playing = true;
+        while(playing){
+            int randomIndex = (int) (Math.random() * riddles.length);
             String selectedRiddle = riddles[randomIndex];
             String correctAnswer = answer[randomIndex];
             String hint = hints[randomIndex];
@@ -51,16 +51,27 @@ public class Riddle {
             }else{
                 System.out.println("Wrong!, would you like a hint?(y/n)");
                 String giveHint = scanner.next().toLowerCase();
-                if(giveHint.equals("y")){
+                if(giveHint.equals("y")) {
                     System.out.println(hint);
+                    System.out.println("TRY again");
+                    useranswer = scanner.next();
+                    if (useranswer.equalsIgnoreCase(correctAnswer)) {
+                        System.out.println("Correct! ");
+                        score++;
+                    } else {
+                        System.out.println("Still Wrong ! the correct answer was : " + correctAnswer);
+                    }
+                }else{
+                        System.out.println("The correct answer was :"+ correctAnswer);
+                    }
                 }
-            }
+
 
             //ALLOW the user to continue or exit
             System.out.println("Continue playing?(y/n): ");
-            String playAgain = scanner.nextLine().toLowerCase();
+            String playAgain = scanner.next().toLowerCase();
             if(!playAgain.equals("y")){
-                break;
+                playing = false;
             }
         }
         //display the final score
