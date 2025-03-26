@@ -10,7 +10,7 @@ import java.util.Scanner;
  Project Name : MinorProjects
  ***/
 public class Riddle {
-    public static void Main(String[] args){
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
         int score = 0;
@@ -43,14 +43,14 @@ public class Riddle {
             System.out.println("Riddle: "+ selectedRiddle);
 
             //Get the user answer
-            String useranswer = scanner.nextLine();
+            String useranswer = scanner.next();
 
             if(useranswer.equalsIgnoreCase(correctAnswer)){
                 System.out.println("Correct");
                 score++;
             }else{
-                System.out.println("Wrong!, would you like a hind?(y/n)");
-                String giveHint = scanner.nextLine().toLowerCase();
+                System.out.println("Wrong!, would you like a hint?(y/n)");
+                String giveHint = scanner.next().toLowerCase();
                 if(giveHint.equals("y")){
                     System.out.println(hint);
                 }
