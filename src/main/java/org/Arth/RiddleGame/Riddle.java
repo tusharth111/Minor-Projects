@@ -33,7 +33,9 @@ public class Riddle {
                 "Hint: It produces heat and light."
         };
         boolean playing = true;
-        while(playing){
+        while(playing)
+        {
+            int guesses = 1;
             int randomIndex = (int) (Math.random() * riddles.length);
             String selectedRiddle = riddles[randomIndex];
             String correctAnswer = answer[randomIndex];
@@ -47,10 +49,12 @@ public class Riddle {
 
             if(useranswer.equalsIgnoreCase(correctAnswer)){
                 System.out.println("Correct");
+                System.out.println("Number of guesses you have taken are : " +guesses);
                 score++;
             }else{
                 System.out.println("Wrong!, would you like a hint?(y/n)");
                 String giveHint = scanner.next().toLowerCase();
+                guesses=guesses+1;
                 if(giveHint.equals("y")) {
                     System.out.println(hint);
                     System.out.println("TRY again");
@@ -58,6 +62,7 @@ public class Riddle {
                     if (useranswer.equalsIgnoreCase(correctAnswer)) {
                         System.out.println("Correct! ");
                         score++;
+                        System.out.println("you have taken this many guesses: "+guesses);
                     } else {
                         System.out.println("Still Wrong ! the correct answer was : " + correctAnswer);
                     }
